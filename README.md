@@ -1,4 +1,4 @@
-# odin-monty-hpru-2025
+# odin-monty-pasteur-2025
 
 Presentation and material for odin-monty introduction to Institut Pasteur 24th September 2025
 
