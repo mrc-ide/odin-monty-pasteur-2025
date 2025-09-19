@@ -1,4 +1,4 @@
-Package: odin.dust.pasteur.2025
+Package: odin.monty.pasteur.2025
 Title: Odin Monty Pasteur 2025
 Version: 1.0
 Authors@R: c(person("Ed", "Knock", role = c("aut", "cre"),
