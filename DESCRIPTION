@@ -1,5 +1,5 @@
 Package: odin.dust.pasteur.2025
-Title: Odin Dust Pasteur 2025
+Title: Odin Monty Pasteur 2025
 Version: 1.0
 Authors@R: c(person("Ed", "Knock", role = c("aut", "cre"),
                     email = "e.knock@imperial.ac.uk"),
