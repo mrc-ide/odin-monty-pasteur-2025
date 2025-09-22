@@ -747,13 +747,14 @@ These are both straightforward to setup, a demonstration can be found [here](htt
 
 ## Advanced `monty`: parallel tempering
 
-Consider a simple Bayesian model where the likelihood is a mixture of normals model:
+Motivating example: likelihood is a mixture of normals model
+
 ```{r}
 ex_mixture <- function(x) log(dnorm(x, mean = 5) / 2 + dnorm(x, mean = -5) / 2)
 likelihood <- monty_model_function(ex_mixture, allow_multiple_parameters = TRUE)
 ```
 
-and the prior is a normal distribution with a wider variance:
+prior is a normal distribution with a wider variance
 
 ```{r}
 prior <- monty_dsl({
@@ -761,12 +762,12 @@ prior <- monty_dsl({
 })
 ```
 
-and the posterior is simply the product of the two (or the sum if working with log-densities)
-```{r}
-posterior <- likelihood + prior
-```
+## Advanced `monty`: parallel tempering
+
+posterior is the product of the two (the sum on a log-scale)
 
 ```{r}
+posterior <- likelihood + prior
 x <- seq(-10, 10, length.out = 1001)
 y <- exp(posterior$density(rbind(x)))
 plot(x, y / sum(y) / diff(x)[[1]], col = "red", type = 'l', ylab = "density")
@@ -774,14 +775,20 @@ plot(x, y / sum(y) / diff(x)[[1]], col = "red", type = 'l', ylab = "density")
 
 ## Advanced `monty`: parallel tempering
 
-We'll try using the random walk Metropolis-Hastings sampler for this model - we seem to explore one mode well but the other has not been explored at all
+Try a random walk Metropolis-Hastings sampler for this model
 
 ```{r}
 vcv <- matrix(1.5)
 sampler_rw <- monty_sampler_random_walk(vcv = vcv)
 res_rw <- monty_sample(posterior, sampler_rw, n_steps = 1000)
-plot(res_rw$pars[1, , ],
-     ylim = c(-8, 8))
+```
+
+## Advanced `monty`: parallel tempering
+
+Only one mode has been explored
+
+```{r}
+plot(res_rw$pars[1, , ], ylim = c(-8, 8), ylab = "Value")
 abline(h = -5, lty = 3, col = "red")
 abline(h = 5, lty = 3, col = "red")
 ```
@@ -793,9 +800,8 @@ Multiple chains does not solve the issue
 ```{r}
 res_rw3 <- monty_sample(posterior, sampler_rw, n_steps = 1000, n_chains = 3,
                         initial = rbind(c(-5, 0, 5)))
-matplot(res_rw3$pars[1, , ], type = "p", pch = 21,
-        col = c("blue", "green", "purple"),
-        ylim = c(-8, 8), ylab = "Value", main = "RW samples (3 chains)")
+matplot(res_rw3$pars[1, , ], type = "p", pch = 21, ylim = c(-8, 8),
+        ylab = "Value", col = c("blue", "green", "purple"))
 abline(h = -5, lty = 3, col = "red")
 abline(h = 5, lty = 3, col = "red")
 ```
@@ -805,10 +811,9 @@ abline(h = 5, lty = 3, col = "red")
 Parallel tempering helps solve such problems
 
 - Multiple chains run at different “temperatures”
-- posterior effectively flattened or softened at higher temperatures
-- allows the "hot" chains to move more freely across parameter space 
-- periodically, the states of the chains are swapped according to an acceptance rule that preserves the correct stationary distribution
-- hopefully higher-temperature chains will quickly explore multiple modes and then swap states with the lower-temperature chains
+- states of the chains can be swapped periodically
+
+![](images/infographic_coupling.png)
 
 ## Advanced `monty`: parallel tempering
 
@@ -821,9 +826,12 @@ s <- monty_sampler_parallel_tempering(sampler_rw, n_rungs = 10)
 res_pt <- monty_sample(posterior, s, 1000, n_chains = 1)
 ```
 
+## Advanced `monty`: parallel tempering
+
+Parallel tempering helps us explore both modes
+
 ```{r}
-plot(res_pt$pars[1, , ],
-     ylim = c(-8, 8))
+plot(res_pt$pars[1, , ], ylim = c(-8, 8), ylab = "Value")
 abline(h = -5, lty = 3, col = "red")
 abline(h = 5, lty = 3, col = "red")
 ```
@@ -837,11 +845,16 @@ abline(h = 5, lty = 3, col = "red")
     - some parameters are regional, some shared
     - regions independent given shared parameters 
     - alternate between updates of the regional parameters (can be done independently) and shared parameters (must be done jointly)
+    
+## Acknowledgements
+
+- Rich Fitzjohn
+- Marc Baguelin
 
 ## Resources {.smaller}
 
--   You can find more in our online `odin` & `monty` book:[https://mrc-ide.github.io/odin-monty/](https://mrc-ide.github.io/odin-monty/)
+-   You can find more in our online `odin` & `monty` book: [https://mrc-ide.github.io/odin-monty/](https://mrc-ide.github.io/odin-monty/)
 -   Users of the old versions of the packages may find the migration documentation useful:
     - `odin` to `odin2`: [https://mrc-ide.github.io/odin2/articles/migrating.html](https://mrc-ide.github.io/odin2/articles/migrating.html)
     - `dust` to `dust2`: [https://mrc-ide.github.io/dust2/articles/migrating.html](https://mrc-ide.github.io/dust2/articles/migrating.html)
-    - `mcstate` to `monty`: [https://mrc-ide.github.io/monty/articles/migration.html] (https://mrc-ide.github.io/monty/articles/migration.html)
+    - `mcstate` to `monty`: [https://mrc-ide.github.io/monty/articles/migration.html](https://mrc-ide.github.io/monty/articles/migration.html)
