@@ -6,9 +6,12 @@ Authors@R: c(person("Ed", "Knock", role = c("aut", "cre"),
              person("Imperial College of Science, Technology and Medicine",
                     role = "cph"))
 Imports:
+    decor,
     dust2,
     odin2,
     monty,
+    pkgbuild,
+    pkgload,
     posterior,
     quarto,
     rmarkdown
