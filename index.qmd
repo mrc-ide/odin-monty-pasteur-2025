@@ -789,8 +789,7 @@ Only one mode has been explored
 
 ```{r}
 plot(res_rw$pars[1, , ], ylim = c(-8, 8), ylab = "Value")
-abline(h = -5, lty = 3, col = "red")
-abline(h = 5, lty = 3, col = "red")
+abline(h = c(-5, 5), lty = 3, col = "red")
 ```
 
 ## Advanced `monty`: parallel tempering
@@ -802,8 +801,7 @@ res_rw3 <- monty_sample(posterior, sampler_rw, n_steps = 1000, n_chains = 3,
                         initial = rbind(c(-5, 0, 5)))
 matplot(res_rw3$pars[1, , ], type = "p", pch = 21, ylim = c(-8, 8),
         ylab = "Value", col = c("blue", "green", "purple"))
-abline(h = -5, lty = 3, col = "red")
-abline(h = 5, lty = 3, col = "red")
+abline(h = c(-5, 5), lty = 3, col = "red")
 ```
 
 ## Advanced `monty`: parallel tempering
@@ -832,8 +830,7 @@ Parallel tempering helps us explore both modes
 
 ```{r}
 plot(res_pt$pars[1, , ], ylim = c(-8, 8), ylab = "Value")
-abline(h = -5, lty = 3, col = "red")
-abline(h = 5, lty = 3, col = "red")
+abline(h = c(-5, 5), lty = 3, col = "red")
 ```
 
 ## Future roadmap {.smaller}
