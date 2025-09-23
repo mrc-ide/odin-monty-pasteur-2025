@@ -199,9 +199,9 @@ r_output(readLines("models/sir-basic.R"))
 
 ::: {.column width="50%"}
 \begin{gather*}
-S(t + \Delta t) = S(t) - n_{SI}\\
-I(t + \Delta t) = I(t) + n_{SI} - n_{IR}\\
-R(t + \Delta t) = R(t) + n_{IR}
+S(t + dt) = S(t) - n_{SI}\\
+I(t + dt) = I(t) + n_{SI} - n_{IR}\\
+R(t + dt) = R(t) + n_{IR}
 \end{gather*}
 
 :::
