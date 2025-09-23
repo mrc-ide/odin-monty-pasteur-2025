@@ -848,9 +848,18 @@ plot(res_pt$pars[1, , ], ylim = c(-8, 8), ylab = "Value")
 abline(h = c(-5, 5), lty = 3, col = "red")
 ```
 
+## Other `monty` samplers
+
+- Adaptive random walk Metropolis-Hastings
+    - model must be deterministic
+- Hamiltonian Monte Carlo 
+    - model must be differentiable, odin models not supported
+- Build your own sampler
+    - `monty` will handle bookkeeping and parallelism
+
 ## Future roadmap {.smaller}
 
-- NUTS algorithm
+- NUTS (No U-Turn Sampler) algorithm
 - `monty` support for augmented data
 - nested sampler for nested models
     - fitting multiple regions together
