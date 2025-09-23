@@ -400,6 +400,7 @@ r_output(model_compile_code("sir", "models/sir-compare.R"))
 
 ```{r}
 #| include: false
+set.seed(1)
 sir <- odin("models/sir-compare.R")
 ```
 
@@ -659,6 +660,10 @@ These can get very large quickly - there are two main ways to help reduce this:
 * Saving only a subset of the states
 * Thinning (can be done while running or after running)
 
+```{r}
+samples <- monty_samples_thin(samples, burnin = 500, thinning_factor = 2)
+```
+
 ## Deterministic models from stochastic
 
 * Stochastic models written in odin, can be run deterministically
@@ -682,6 +687,11 @@ dust_likelihood_run(unfilter, list(beta = 0.4, gamma = 0.2))
 ```
 
 ## Fitting in deterministic mode
+
+```{r}
+#| include: false
+set.seed(1)
+```
 
 ```{r}
 likelihood <- dust_likelihood_monty(unfilter, packer, save_trajectories = TRUE)
@@ -748,6 +758,11 @@ These are both straightforward to setup, a demonstration can be found [here](htt
 ## Advanced `monty`: parallel tempering
 
 Motivating example: likelihood is a mixture of normals model
+
+```{r}
+#| include: false
+set.seed(1)
+```
 
 ```{r}
 ex_mixture <- function(x) log(dnorm(x, mean = 5) / 2 + dnorm(x, mean = -5) / 2)
