@@ -2,6 +2,10 @@
 
 Presentation and material for odin-monty introduction to Institut Pasteur 24th September 2025
 
+## Slides
+
+The slides can be accessed [here](https://mrc-ide.github.io/odin-monty-pasteur-2025/).
+
 ## Demo script
 
 A demo script containing the code from the slides plus some additional bits is available here: [`odin-monty-demo.R`](odin-monty-demo.R)
