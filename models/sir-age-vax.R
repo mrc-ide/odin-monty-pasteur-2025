@@ -47,5 +47,5 @@ dim(R) <- c(n_age, n_vax)
 dim(m, s_ij) <- c(n_age, n_age)
 dim(lambda) <- n_age
 dim(eta) <- c(n_age, n_vax)
-dim(rel_susceptibility) <- c(n_vax)
+dim(rel_susceptibility) <- n_vax
 dim(p_vax, n_S_vax, new_S) <- c(n_age, n_vax)
