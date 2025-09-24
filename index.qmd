@@ -664,6 +664,19 @@ These can get very large quickly - there are two main ways to help reduce this:
 samples <- monty_samples_thin(samples, burnin = 500, thinning_factor = 2)
 ```
 
+
+
+## Pipeline summary
+* Write model including likelihood and compile with `odin2`
+* Build filter using data and compiled model with `dust2`
+* Create packer with `monty`
+* Create monty likelihood object using filter and packer with `dust2`
+* Create prior with `monty` DSL
+* Combine prior and likelihood models
+* Create sampler
+* Run sampler with `monty_sample`
+
+
 ## Deterministic models from stochastic
 
 * Stochastic models written in odin, can be run deterministically
