@@ -2,6 +2,10 @@
 
 Presentation and material for odin-monty introduction to Institut Pasteur 24th September 2025
 
+## Demo script
+
+A demo script containing the code from the slides plus some additional bits is available here: [`odin-monty-demo.R`](odin-monty-demo.R)
+
 ### Prerequisites:
 
 * R (4.5.x recommended, 4.3.x or 4.4.x will work)
