@@ -1,0 +1,24 @@
+Package: odin.monty.pasteur.2025
+Title: Odin Monty Pasteur 2025
+Version: 1.0
+Authors@R: c(person("Ed", "Knock", role = c("aut", "cre"),
+                    email = "e.knock@imperial.ac.uk"),
+             person("Imperial College of Science, Technology and Medicine",
+                    role = "cph"))
+Imports:
+    bayesplot,
+    brio,
+    decor,
+    dust2,
+    odin2,
+    monty,
+    pkgbuild,
+    pkgload,
+    posterior,
+    quarto,
+    rmarkdown
+Remotes:
+    mrc-ide/dust2,
+    mrc-ide/monty,
+    mrc-ide/odin2
+Encoding: UTF-8
