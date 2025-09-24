@@ -668,8 +668,9 @@ samples <- monty_samples_thin(samples, burnin = 500, thinning_factor = 2)
 
 ## Pipeline summary
 * Write model including likelihood and compile with `odin2`
-* Build filter and monty likelihood object with `dust2`
+* Build filter using data and compiled model with `dust2`
 * Create packer with `monty`
+* Create monty likelihood object using filter and packer with `dust2`
 * Create prior with `monty` DSL
 * Combine prior and likelihood models
 * Create sampler
