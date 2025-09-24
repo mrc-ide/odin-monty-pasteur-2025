@@ -4,14 +4,14 @@ Presentation and material for odin-monty introduction to Institut Pasteur 24th S
 
 ### Prerequisites:
 
-* R (4.4.x recommended, 4.3.x will work)
+* R (4.5.x recommended, 4.3.x or 4.4.x will work)
 * RTools on Windows, XCode command line tools on macOS or a functioning C++ toolchain on Linux
 
 Install the packages:
 
 ```r
 install.packages(
-  c("odin2", "decor", "pkgload", "posterior", "brio"),
+  c("odin2", "dust2", "monty", "decor", "pkgload", "posterior", "brio"),
   repos = c("https://mrc-ide.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
