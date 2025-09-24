@@ -891,3 +891,5 @@ abline(h = c(-5, 5), lty = 3, col = "red")
     - `odin` to `odin2`: [https://mrc-ide.github.io/odin2/articles/migrating.html](https://mrc-ide.github.io/odin2/articles/migrating.html)
     - `dust` to `dust2`: [https://mrc-ide.github.io/dust2/articles/migrating.html](https://mrc-ide.github.io/dust2/articles/migrating.html)
     - `mcstate` to `monty`: [https://mrc-ide.github.io/monty/articles/migration.html](https://mrc-ide.github.io/monty/articles/migration.html)
+-   If you want to highlight a potential bug, we suggest posting it as an issue on one of the Github repos
+-   You can use the Discussions page on the `odin-monty` repo: [https://github.com/mrc-ide/odin-monty/discussions](https://github.com/mrc-ide/odin-monty/discussions)
